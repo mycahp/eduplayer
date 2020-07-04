@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <a [routerLink]="['/student/lessons']" [queryParams]="{id: course.id}">{{course.title}}</a>
+    </mat-card-title>
+    <mat-card-subtitle>{{course.professor}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image *ngIf="course.img" src="{{course.img}}" alt="{{course.title}}">
+  <mat-card-content>
+    <p>
+      {{course.description}}
+    </p>
+  </mat-card-content>
+</mat-card>

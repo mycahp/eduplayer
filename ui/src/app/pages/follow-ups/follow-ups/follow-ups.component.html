@@ -1,0 +1,14 @@
+<div class="follow-ups-container">
+  <div *ngFor="let followUp of getFollowUpItems()" class="follow-up">
+    <h2>{{followUp.author}}</h2>
+    <small>{{followUp.date}} &bull; <a [routerLink]="'/student/video'"
+        [queryParams]="{ id: followUp.videoId, courseId: followUp.courseId, videoTime: followUp.displayTime }">Video:
+        {{followUp.videoId}} / Time: {{getVideoLength(followUp.displayTime)}}</a></small>
+    <p>{{followUp.content}}</p>
+    <div class="response">
+      <textarea matInput></textarea>
+      <button mat-btn>Submit</button>
+    </div>
+
+  </div>
+</div>

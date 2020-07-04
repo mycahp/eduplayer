@@ -1,0 +1,27 @@
+.lesson-list-container {
+    display: flex;
+    width: 75%;
+    margin: 10px auto;
+    flex-wrap: wrap;
+
+    .lesson {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 25px 0px;
+
+        h2 {
+            margin: 0px;
+        }
+
+        .video {
+            padding: 5px 0px;
+        }
+
+        border-bottom: 1px solid #6C7A89;
+    }
+
+    .lesson:last-of-type {
+        border: 0px;
+    }
+}

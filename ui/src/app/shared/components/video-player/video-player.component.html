@@ -1,0 +1,16 @@
+<div class="video-player-container">
+  <div class="video">
+    <img src="assets/video.png">
+  </div>
+  <div class="feed">
+    <div class="items">
+      <app-feed-item [feedItem]="feedItem" *ngFor="let feedItem of getFeedItems()"></app-feed-item>
+    </div>
+    <div class="input">
+        <app-input-field></app-input-field>
+    </div>
+  </div>
+  <div class="back-btn">
+    <a [routerLink]="['/student/lessons']" [queryParams]="{ id : courseId }">&laquo; Back to Lesson List</a>
+  </div>
+</div>

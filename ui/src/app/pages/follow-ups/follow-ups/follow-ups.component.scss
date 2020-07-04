@@ -1,0 +1,26 @@
+.follow-ups-container {
+    display: flex;
+    width: 75%;
+    margin: 10px auto;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #6C7A89;
+
+    .response {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 10px;
+
+        textarea {
+            margin-bottom: 10px;
+        }
+    }
+
+    h2 {
+        margin: 0px;
+    }
+
+    p {
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,16 @@
+.login-container {
+    display: flex;
+    width: 75%;
+    margin: 10px auto;
+    flex-wrap: wrap;
+
+    .login-form {
+        width: 25%;
+        margin-left: auto;
+        margin-right: auto;
+
+        mat-form-field, button {
+            width: 100%;
+        }
+    }
+}
