@@ -1,0 +1,7 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: cd api; npm install; cd ../ui; npm install
+  - command: cd ui; ng serve
+  - command: cd api; npm start
