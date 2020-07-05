@@ -1,12 +1,13 @@
 <div class="login-container">
   <div class="login-form">
+    <div class="error" *ngIf="error">{{error}}</div>
     <mat-form-field>
-      <mat-label>E-mail</mat-label>
-      <input matInput placeholder="username@institution.edu">
+      <mat-label>User</mat-label>
+      <input matInput placeholder="student" [ngModel]="username" (ngModelChange)="username = $event" required>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Password</mat-label>
-      <input matInput placeholder="***********" type="password">
+      <input matInput placeholder="***********" type="password" [ngModel]="password" (ngModelChange)="password = $event" required>
     </mat-form-field>
     <button mat-raised-button (click)="login()">Login</button>
   </div>

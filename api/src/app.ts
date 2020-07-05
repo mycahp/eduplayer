@@ -6,22 +6,21 @@ import passport from 'passport';
 import passportLocal from 'passport-local';
 import mongoose from 'mongoose';
 import connectEnsureLogin from 'connect-ensure-login';
-
-
-// Models
 import User from './models/user';
+import cors from 'cors';
+
 
 // Routes
 import teachingStaff from './routes/taeching-staff';
+import authenticate from './routes/authentication';
 
 
 // Mongoose setup
-
 const db = mongoose.connection;
 mongoose.connect('mongodb://localhost/eduplayer', { useNewUrlParser: true, useUnifiedTopology: true });
 
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
+db.once('open', () => {
     console.log('Connected to mongo.');
 });
 
@@ -33,40 +32,14 @@ passport.deserializeUser(User.deserializeUser());
 
 // Express etup
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/api/professors', teachingStaff);
-
-const router = express.Router();
-
-
-router.post('/authenticate', (req, res, next) => {
-    passport.authenticate('local',
-        (err, user, info) => {
-            if (err) {
-                return next(err);
-            }
-
-            if (!user) {
-                return res.redirect('/login?info=' + info);
-            }
-
-            req.logIn(user, function (err) {
-                if (err) {
-                    return next(err);
-                }
-
-                return res.redirect('/');
-            });
-
-        })(req, res, next);
-});
-
-module.exports = app;
-
+app.use('/api/teaching-staff', teachingStaff);
+app.use('/authenticate', authenticate);
 
 app.listen(3000, () => {
     console.log('Started API on port 3000.');

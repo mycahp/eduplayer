@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,17 @@ import { FollowUpsComponent } from './pages/follow-ups/follow-ups/follow-ups.com
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiConfigService } from './shared/services/api-config.service';
+import { UserService } from './shared/services/user.service';
+
+export function initAPIandUser(apiConfigService: ApiConfigService, userService: UserService){
+    return () => {
+      apiConfigService.getAPIUrl();
+      userService.findUserInfo();
+    }
+}
 
 @NgModule({
   declarations: [
@@ -44,9 +55,16 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    'provide': APP_INITIALIZER,
+    'useFactory': initAPIandUser,
+    'deps': [ApiConfigService, UserService],
+    'multi': true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -33,6 +33,7 @@
       true,
       "rxjs/Rx"
     ],
+    "noImplicitAny": false,
     "import-spacing": true,
     "indent": {
       "options": [
@@ -65,8 +66,7 @@
     ],
     "no-empty": false,
     "no-inferrable-types": [
-      true,
-      "ignore-params"
+      false,
     ],
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,

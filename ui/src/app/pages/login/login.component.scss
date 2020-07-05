@@ -12,5 +12,10 @@
         mat-form-field, button {
             width: 100%;
         }
+
+        .error {
+          color: red;
+          text-align: center;
+        }
     }
 }

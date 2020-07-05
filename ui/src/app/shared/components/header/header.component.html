@@ -3,8 +3,8 @@
         <h1>EduPlayer</h1>
         <small>Video Platform for Students</small>
     </div>
-    <div class="status">
-        <p>Logged in as {{userName}}.</p>
-        <p><a href="">Logout</a></p>
+    <div class="status" *ngIf="userService.currentUser">
+        <p>Logged in as {{userService.currentUser.username}}.</p>
+        <p><button (click)="logout()">Logout</button></p>
     </div>
 </div>

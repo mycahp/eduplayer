@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 
 const User = new Schema({
     first_name: String,
-    last_name: String
+    last_name: String,
+    type: String
 });
 
 User.plugin(passportLocalMongoose);
