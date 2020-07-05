@@ -1,0 +1,6 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - command: cd ui; NG_CLI_ANALYTICS=ci npm install; npx ng serve
+  - command: cd api; NG_CLI_ANALYTICS=cis npm install; npm start
