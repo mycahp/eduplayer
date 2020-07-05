@@ -2,5 +2,5 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - command: cd ui; export NG_CLI_ANALYTICS=ci; npm install; npx ng serve
-  - command: cd api; export NG_CLI_ANALYTICS=ci; npm install; npm start
+  - command: cd ui; NG_CLI_ANALYTICS=ci npm install; npx ng serve
+  - command: cd api; NG_CLI_ANALYTICS=cis npm install; npm start
