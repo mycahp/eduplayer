@@ -13,6 +13,10 @@ export class UserService {
 
   constructor() { }
 
+  public isAuthenticated(): boolean {
+    return !!this.currentUser;
+  }
+
   public setUserInfo(user) {
     localStorage.setItem('userInfo', JSON.stringify(user));
     this.currentUser = user;

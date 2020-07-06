@@ -1,0 +1,14 @@
+[{
+	"_id": {
+		"$oid": "5f028e9b3e5da30c7599dca9"
+	},
+	"title": "CS4130: Modern Web Development",
+	"description": "Students will learn modern with JavaScript, HTML, and CSS.",
+	"img": "https://www.elegantthemes.com/blog/wp-content/uploads/2018/12/top11.png",
+	"lessons": [
+		{
+			"$oid": "5f028df13e5da30c7599dca6"
+		}
+	]
+}]
+

@@ -4,11 +4,12 @@ import passportLocalMongoose from 'passport-local-mongoose';
 const Schema = mongoose.Schema;
 
 const User = new Schema({
-    first_name: String,
-    last_name: String,
-    type: String
+  firstName: String,
+  lastName: String,
+  type: String,
+  courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
 });
 
 User.plugin(passportLocalMongoose);
 
-export default mongoose.model('User', User as PassportLocalSchema);
+export default mongoose.model('User', User as PassportLocalSchema, 'users');

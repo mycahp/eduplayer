@@ -4,7 +4,7 @@
         <small>Video Platform for Students</small>
     </div>
     <div class="status" *ngIf="userService.currentUser">
-        <p>Logged in as {{userService.currentUser.username}}.</p>
+        <p>Welcome, {{userService.currentUser.firstName}} {{userService.currentUser.lastName}}.</p>
         <p><button (click)="logout()">Logout</button></p>
     </div>
 </div>

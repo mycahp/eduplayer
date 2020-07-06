@@ -11,9 +11,10 @@ import cors from 'cors';
 
 
 // Routes
-import teachingStaff from './routes/taeching-staff';
 import authenticate from './routes/authentication';
-
+import users from './routes/users';
+import courses from './routes/courses';
+import lessons from './routes/lessons';
 
 // Mongoose setup
 const db = mongoose.connection;
@@ -38,8 +39,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/api/teaching-staff', teachingStaff);
 app.use('/authenticate', authenticate);
+app.use('/users', users);
+app.use('/courses', courses);
+app.use('/lessons', lessons);
 
 app.listen(3000, () => {
     console.log('Started API on port 3000.');

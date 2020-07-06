@@ -2,7 +2,6 @@ import express from 'express';
 import passport from 'passport';
 import User from '../models/user';
 
-
 const router = express.Router();
 
 router.post('/', (req, res, next) => {
@@ -21,20 +20,20 @@ router.post('/', (req, res, next) => {
           return next(loginErr);
         }
 
-        return res.json({ username: user.username, type: user.type, userId: user._id });
+        return res.json({ username: user.username, type: user.type, userId: user._id, firstName: user.firstName, lastName: user.lastName });
       });
 
     })(req, res, next);
 });
 
-router.post("/logout", function(req, res){
-    req.logout();
-    res.status(200).json({loggedOut: true});
+router.post("/logout", (req, res) => {
+  req.logout();
+  res.status(200).json({ loggedOut: true });
 });
 
 router.get('/register', (req: any, res: any, next: any) => {
   if (req.query.type === 'teaching') {
-    User.register({ username: 'teacher', type: 'teaching' } as any, 'password', (err, user) => {
+    User.register({ username: 'teacher', type: 'teaching', firstName: "Professor", lastName: "Professorson", courses: ['5f028e9b3e5da30c7599dca9'] } as any, 'password', (err, user) => {
       if (err) {
         res.status(500).json(err);
       } else {
@@ -42,7 +41,7 @@ router.get('/register', (req: any, res: any, next: any) => {
       }
     });
   } else {
-    User.register({ username: 'student', type: 'student' } as any, 'password', (err, user) => {
+    User.register({ username: 'student', type: 'student', firstName: "Student", lastName: "Learner", courses: ['5f028e9b3e5da30c7599dca9'] } as any, 'password', (err, user) => {
       if (err) {
         res.status(500).json(err);
       } else {

@@ -1,0 +1,10 @@
+[{
+	"_id": {
+		"$oid": "5f028df13e5da30c7599dca6"
+	},
+	"name": "Welcome to Web Development",
+	"description": "An introduction to the world of web development.",
+	"course": "5f026f638531caf3e20d1fc1",
+	"videoList": []
+}]
+
