@@ -29,14 +29,9 @@ export class LoginComponent implements OnInit {
     this.route.queryParamMap.subscribe(async (params) => {
       this.http.post(`${this.apiConfigService.apiURL}/authenticate/`, { username: this.username, password: this.password }).subscribe((response: {username: String, type: String}) => {
         this.userService.setUserInfo(response);
+        console.log(this.userService.currentUser);
 
-        if (response.type == 'student') {
-          this.router.navigate(['/student']);
-        }
-
-        if (response.type == 'teaching') {
-          this.router.navigate(['/teaching-staff']);
-        }
+        this.router.navigate(['/teaching-staff']);
       }, (response) => {
         this.error = response.error.error;
       });

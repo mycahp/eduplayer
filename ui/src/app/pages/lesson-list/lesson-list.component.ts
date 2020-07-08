@@ -15,9 +15,7 @@ export class LessonListComponent implements OnInit {
   public courseId: string;
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe(params => {
-      this.courseId = params.get('id');
-    });
+    this.courseId = this.route.snapshot.paramMap.get('courseId');
   }
 
   public getLessonList(): Lesson[] {
@@ -27,7 +25,7 @@ export class LessonListComponent implements OnInit {
         description: 'This is a test lesson, please watch all the videos to learn as much as you can!',
         videoList: [
           {
-            id: '389024023ulkdflj2',
+            _id: '389024023ulkdflj2',
             name: 'Video 1',
             description: 'The first video in this lesson',
             length: 181
@@ -39,19 +37,19 @@ export class LessonListComponent implements OnInit {
         description: 'This is a test lesson, please watch all the videos to learn as much as you can!',
         videoList: [
           {
-            id: '389024023ulkdflj2',
+            _id: '389024023ulkdflj2',
             name: 'Video 1',
             description: 'The first video in this lesson',
             length: 181
           },
           {
-            id: '389024023ulkdflj2',
+            _id: '389024023ulkdflj2',
             name: 'Video 2',
             description: 'The second video in this lesson',
             length: 231
           },
           {
-            id: '389024023ulkdflj2',
+            _id: '389024023ulkdflj2',
             name: 'Video 3',
             description: 'The thrid video in this lesson',
             length: 512
@@ -63,7 +61,7 @@ export class LessonListComponent implements OnInit {
         description: 'This is a test lesson, please watch all the videos to learn as much as you can!',
         videoList: [
           {
-            id: '389024023ulkdflj2',
+            _id: '389024023ulkdflj2',
             name: 'Video 1',
             description: 'The first video in this lesson',
             length: 181

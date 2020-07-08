@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ApiConfigService } from './api-config.service';
+import { Course } from 'src/app/core/models/course';
 
 @Injectable({
   providedIn: 'root'
@@ -6,12 +9,20 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   currentUser: {
-    username: String,
-    type: String,
-    id: String
-  }
+    firstName: string,
+    lastName: string,
+    type: string,
+    id: string
+    courses: Course[]
+  } = {
+    firstName: null,
+    lastName: null,
+    type: null,
+    id: null,
+    courses: []
+  };
 
-  constructor() { }
+  constructor(private http: HttpClient, private apiConfig: ApiConfigService) { }
 
   public isAuthenticated(): boolean {
     return !!this.currentUser;

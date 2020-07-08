@@ -1,11 +1,11 @@
 <div class="lesson-list-container">
-    <p><a [routerLink]="['/student']">&laquo; Back</a></p>
+    <p><a [routerLink]="['/']">&laquo; Back</a></p>
     <div *ngFor="let lesson of getLessonList()" class="lesson">
         <h2>{{lesson.name}}</h2>
         <p>{{lesson.description}}</p>
 
         <div class="video" *ngFor="let video of lesson.videoList">
-            <a [routerLink]="'/student/video'" [queryParams]="{id: video.id, courseId: courseId}">{{video.name}}</a>
+            <a [routerLink]="'/video/' + video._id" [queryParams]="{courseId: courseId}">{{video.name}}</a>
             ({{getVideoLength(video.length)}}) - {{video.description}}
         </div>
     </div>

@@ -4,8 +4,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-import { StudentComponent } from './pages/student/student.component';
-import { TeachingStaffComponent } from './pages/teaching-staff/teaching-staff.component';
+import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { ClassCardComponent } from './shared/components/class-card/class-card.component';
@@ -36,8 +35,7 @@ export function initAPIandUser(apiConfigService: ApiConfigService, userService: 
   declarations: [
     AppComponent,
     LoginComponent,
-    StudentComponent,
-    TeachingStaffComponent,
+    HomeComponent,
     HeaderComponent,
     FooterComponent,
     ClassCardComponent,

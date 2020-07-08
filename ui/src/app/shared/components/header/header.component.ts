@@ -13,8 +13,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(public userService: UserService, private http: HttpClient, private apiService: ApiConfigService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   logout(): void {
     this.http.post(`${this.apiService.apiURL}/authenticate/logout`, {}).subscribe((response) => {

@@ -15,4 +15,7 @@ export class ClassCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getCourseLink() {
+    return `/course/${this.course._id}`;
+  }
 }
