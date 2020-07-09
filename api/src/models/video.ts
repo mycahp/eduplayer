@@ -6,6 +6,7 @@ const Video = new Schema({
     name: String,
     description: String,
     length: Number,
+    videoUrl: String,
     lesson: {type: mongoose.Schema.Types.ObjectId, ref: 'Lesson'},
 });
 
