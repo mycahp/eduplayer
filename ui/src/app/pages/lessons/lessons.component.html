@@ -1,6 +1,6 @@
 <div class="lesson-list-container">
     <p><a [routerLink]="['/']">&laquo; Back</a></p>
-    <div *ngFor="let lesson of getLessonList()" class="lesson">
+    <div *ngFor="let lesson of lessons" class="lesson">
         <h2>{{lesson.name}}</h2>
         <p>{{lesson.description}}</p>
 

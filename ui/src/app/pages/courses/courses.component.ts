@@ -4,10 +4,10 @@ import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './courses.component.html',
+  styleUrls: ['./courses.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class CoursesComponent implements OnInit {
 
   constructor(public userService: UserService) { }
 

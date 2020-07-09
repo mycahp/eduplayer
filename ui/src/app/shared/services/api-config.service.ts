@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiConfigService {
   public apiURL: String;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   async getAPIUrl() {
     this.apiURL = await this.http.get('/assets/api.config.txt', {responseType: 'text'}).toPromise();

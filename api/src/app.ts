@@ -15,6 +15,7 @@ import authenticate from './routes/authentication';
 import users from './routes/users';
 import courses from './routes/courses';
 import lessons from './routes/lessons';
+import videos from './routes/videos';
 
 // Mongoose setup
 const db = mongoose.connection;
@@ -43,6 +44,8 @@ app.use('/authenticate', authenticate);
 app.use('/users', users);
 app.use('/courses', courses);
 app.use('/lessons', lessons);
+app.use('/videos', videos);
+
 
 app.listen(3000, () => {
     console.log('Started API on port 3000.');
