@@ -1,15 +1,22 @@
 import mongoose, { PassportLocalSchema } from 'mongoose';
-import passportLocalMongoose from 'passport-local-mongoose';
+import jwt from 'jsonwebtoken';
+import config from 'config';
+import Joi from 'joi';
 
 const Schema = mongoose.Schema;
 
 const User = new Schema({
   firstName: String,
   lastName: String,
+  username: String,
+  password: String,
   type: String,
   courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
 });
 
-User.plugin(passportLocalMongoose);
+User.methods.generateAuthToken = function() {
+  const token = jwt.sign({ _id: this._id, type: this.type }, config.get('secretKey')); // get the private key from the config file -> environment variable
+  return token;
+}
 
-export default mongoose.model('User', User as PassportLocalSchema, 'users');
+export default mongoose.model('User', User, 'users');

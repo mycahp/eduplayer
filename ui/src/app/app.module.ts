@@ -16,19 +16,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiConfigService } from './shared/services/api-config.service';
 import { UserService } from './shared/services/user.service';
 import { LessonsComponent } from './pages/lessons/lessons.component';
 import { VideoPlayerComponent } from './pages/video-player/video-player.component';
 import { FeedItemComponent } from './pages/video-player/components/feed-item/feed-item.component';
 import { InputFieldComponent } from './pages/video-player/components/input-field/input-field.component';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
-export function initAPIandUser(apiConfigService: ApiConfigService, userService: UserService){
-    return async () => {
-      await apiConfigService.getAPIUrl();
-      userService.findUserInfo();
-    }
+export function initAPIandUser(apiConfigService: ApiConfigService, userService: UserService) {
+  return async () => {
+    await apiConfigService.getAPIUrl();
+    userService.findUserInfo();
+  }
 }
 
 @NgModule({
@@ -62,6 +63,8 @@ export function initAPIandUser(apiConfigService: ApiConfigService, userService: 
     'useFactory': initAPIandUser,
     'deps': [ApiConfigService, UserService],
     'multi': true,
+  }, {
+    provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
   }],
   bootstrap: [AppComponent]
 })

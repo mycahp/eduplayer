@@ -16,9 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   logout(): void {
-    this.http.post(`${this.apiService.apiURL}/authenticate/logout`, {}).subscribe((response) => {
       this.userService.destroy();
       this.router.navigate(['/login']);
-    });
   }
 }

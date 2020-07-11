@@ -16,6 +16,7 @@ import users from './routes/users';
 import courses from './routes/courses';
 import lessons from './routes/lessons';
 import videos from './routes/videos';
+import { auth } from './auth';
 
 // Mongoose setup
 const db = mongoose.connection;
@@ -23,14 +24,8 @@ mongoose.connect('mongodb://localhost/eduplayer', { useNewUrlParser: true, useUn
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-    console.log('Connected to mongo.');
+  console.log('Connected to mongo.');
 });
-
-// Passport setup
-const LocalStrategy = passportLocal.Strategy;
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 // Express etup
 const app = express();
@@ -38,15 +33,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(passport.initialize());
-app.use(passport.session());
 app.use('/authenticate', authenticate);
-app.use('/users', users);
-app.use('/courses', courses);
-app.use('/lessons', lessons);
-app.use('/videos', videos);
+app.use('/users', auth, users);
+app.use('/courses', auth, courses);
+app.use('/lessons', auth, lessons);
+app.use('/videos', auth, videos);
 
 
 app.listen(3000, () => {
-    console.log('Started API on port 3000.');
+  console.log('Started API on port 3000.');
 });
