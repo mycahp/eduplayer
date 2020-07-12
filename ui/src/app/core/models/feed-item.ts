@@ -3,6 +3,6 @@ export interface FeedItem {
     date: string;
     content: string;
     displayTime: number;
-    videoId: string;
-    courseId: string;
+    video: string;
+    course: string;
 }

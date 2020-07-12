@@ -20,8 +20,8 @@ export class FollowUpsComponent implements OnInit {
       date: 'Jun. 24, 2020',
       content: 'I do not understand what you meant here. Can you elaborate on what the variable X means?',
       displayTime: 22,
-      videoId: '389024023ulkdflj2',
-      courseId: 'k23k4j239alaskdjw'
+      video: '389024023ulkdflj2',
+      course: 'k23k4j239alaskdjw'
     }];
   }
 

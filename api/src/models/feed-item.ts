@@ -8,7 +8,9 @@ const FeedItem = new Schema({
     content: String,
     displayTime: Number,
     video: {type: mongoose.Schema.Types.ObjectId, ref: 'Video'},
-    courseId: {type: mongoose.Schema.Types.ObjectId, ref: 'Course'},
+    course: {type: mongoose.Schema.Types.ObjectId, ref: 'Course'},
+    professorComment: Boolean,
+    response: String
 });
 
 

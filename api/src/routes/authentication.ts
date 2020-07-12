@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 const router = express.Router();
 
 router.post('/', (req, res, next) => {
-    const user = User.findOne({username: req.body.username}).exec((err: any, user: any) => {
+    const user = User.findOne({username: req.body.username}).populate('courses').exec((err: any, user: any) => {
         if (err || !user) {
             return res.status(401).json({ error: "User not found"});
         }
@@ -14,7 +14,7 @@ router.post('/', (req, res, next) => {
         bcrypt.compare(req.body.password, user.password, (err, result) => {
             if (result) {
                 res.json(
-                    { username: user.username, type: user.type, userId: user._id, firstName: user.firstName, lastName: user.lastName, token: user.generateAuthToken() }
+                    { username: user.username, type: user.type, userId: user._id, firstName: user.firstName, lastName: user.lastName, token: user.generateAuthToken(), courses: user.courses }
                 );
             }
         });

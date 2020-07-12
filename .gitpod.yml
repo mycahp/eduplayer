@@ -6,4 +6,4 @@ tasks:
   - command: cd ui; NG_CLI_ANALYTICS=ci npm install; npx ng serve --disableHostCheck
   - command: cd api; NG_CLI_ANALYTICS=cis npm install; npm run start
   - command: mkdir -p /workspace/data && mongod --dbpath /workspace/data;
-  - command: cd api; mongoimport --db eduplayer --collection users --file users.json --jsonArray; mongoimport --db eduplayer --collection courses --file courses.json --jsonArray; mongoimport --db eduplayer --collection lessons --file lessons.json --jsonArray
+  - command: cd api; mongoimport --db eduplayer --collection users --file users.json --jsonArray; mongoimport --db eduplayer --collection courses --file courses.json --jsonArray; mongoimport --db eduplayer --collection lessons --file lessons.json --jsonArray; mongoimport --db eduplayer --collection videos --file videos.json --jsonArray

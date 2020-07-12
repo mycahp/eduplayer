@@ -16,6 +16,7 @@ import users from './routes/users';
 import courses from './routes/courses';
 import lessons from './routes/lessons';
 import videos from './routes/videos';
+import feedItems from './routes/feed-items';
 import { auth } from './auth';
 
 // Mongoose setup
@@ -38,7 +39,7 @@ app.use('/users', auth, users);
 app.use('/courses', auth, courses);
 app.use('/lessons', auth, lessons);
 app.use('/videos', auth, videos);
-
+app.use('/feed-items', auth, feedItems);
 
 app.listen(3000, () => {
   console.log('Started API on port 3000.');

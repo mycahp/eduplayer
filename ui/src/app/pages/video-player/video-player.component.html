@@ -1,15 +1,13 @@
 <div class="video-player-container">
 	<div class="video">
-		<video id="video" class="video" controls preload="auto" *ngIf="video">
-			<source src="{{video.videoUrl}}" type="video/mp4" />
-		</video>
+    <video #target class="video-js video" controls muted playsinline preload="none"></video>
 	</div>
 	<div class="feed">
 		<div class="items">
 			<app-feed-item [feedItem]="feedItem" *ngFor="let feedItem of getFeedItems()"></app-feed-item>
 		</div>
 		<div class="input">
-			<app-input-field></app-input-field>
+			<app-input-field [videoId]="video._id" [courseId]="courseId" [currentTime]="videoJSPlayer.currentTime()"></app-input-field>
 		</div>
 	</div>
 	<div class="back-btn">
