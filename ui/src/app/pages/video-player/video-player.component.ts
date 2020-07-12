@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Video } from 'src/app/core/models/video';
 import { VideoService } from 'src/app/shared/services/video.service';
 import videojs from 'video.js';
+import { HttpClient } from '@angular/common/http';
+import { FeedItemService } from 'src/app/shared/services/feed-item.service';
 
 @Component({
   selector: 'app-video-player',
@@ -12,7 +14,7 @@ import videojs from 'video.js';
 })
 export class VideoPlayerComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private videoService: VideoService) { }
+  constructor(private route: ActivatedRoute, private videoService: VideoService, private http: HttpClient, private feedItemService: FeedItemService) { }
 
   @ViewChild('target', {static: true}) target: ElementRef;
 
@@ -20,18 +22,23 @@ export class VideoPlayerComponent implements OnInit {
   public video: Video;
   public currentTime: number;
   public videoJSPlayer: any;
+  public videoId: string;
+  public feedItems: FeedItem[];
 
   ngOnInit(): void {
+    this.videoId = this.route.snapshot.paramMap.get('videoId');
+
     this.route.queryParamMap.subscribe(params => {
       this.courseId = params.get('courseId');
     });
 
     this.getVideo();
+    this.getFeedItems();
   }
 
 
   getVideo(): void {
-    this.videoService.getVideoInfo(this.route.snapshot.paramMap.get('videoId')).subscribe((video: Video) => {
+    this.videoService.getVideoInfo(this.videoId).subscribe((video: Video) => {
       this.video = video;
 
       const options = {
@@ -47,14 +54,13 @@ export class VideoPlayerComponent implements OnInit {
     })
   }
 
-  getFeedItems(): FeedItem[] {
-    return [{
-      author: 'Professor Johnson',
-      date: 'Jun. 24, 2020',
-      content: 'Please view the article I mentioned here.',
-      displayTime: 32,
-      video: '389024023ulkdflj2',
-      course: 'k23k4j239alaskdjw'
-    }];
+  getFeedItems() {
+    this.feedItemService.getFeedItems(this.videoId).subscribe((result: FeedItem[]) => {
+      this.feedItems = result;
+    });
+  }
+
+  updatedFeedItems(feedItems) {
+    this.feedItems = feedItems;
   }
 }

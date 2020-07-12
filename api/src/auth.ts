@@ -14,8 +14,6 @@ export function auth(req: any, res: any, next: any) {
     // if can verify the token, set req.user and pass to next middleware
     const decoded: any = jwt.verify(token, config.get("secretKey"));
 
-    console.log(decoded);
-
     User.find({_id: decoded.userId}).exec((err, user) => {
       if (err || !user) {
         return res.status(401).end('User not found');
