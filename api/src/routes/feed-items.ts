@@ -14,7 +14,7 @@ router.get('/', (req: any, res: any) => {
             matcher.author = user._id;
         }
 
-        matcher._id = {$in: user.courses};
+        matcher.course = {$in: user.courses};
 
         FeedItem.find(matcher).exec((err, feedItems) => {
             return res.json(feedItems);
@@ -43,7 +43,7 @@ router.post('/video/:videoId', (req: any, res: any) => {
     content: req.body.content,
     displayTime: req.body.currentVideoTime,
     video: videoId,
-    course: req.body.courseId,
+    course: req.body.course,
     professorComment: req.currentUser.type == 'teaching' ? true : false
   });
 

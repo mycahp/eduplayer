@@ -16,7 +16,7 @@ export class CoursesComponent implements OnInit {
   public feedItemCount;
 
   ngOnInit(): void {
-    this.feedItemCount = this.getFeedItemCount();
+    this.getFeedItemCount();
   }
 
   public isTeachingStaff(): boolean {
@@ -25,7 +25,7 @@ export class CoursesComponent implements OnInit {
 
   public getFeedItemCount() {
     this.feedItemService.getAllFeedItems().subscribe((feedItems: FeedItem[]) => {
-      return feedItems.length;
-    })
+         this.feedItemCount = feedItems.length
+    });
   }
 }
