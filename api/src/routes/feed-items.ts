@@ -2,8 +2,25 @@ import express from 'express';
 import passport from 'passport';
 import FeedItem from '../models/feed-item';
 import mongoose from 'mongoose';
+import User from '../models/user';
 
 const router = express.Router();
+
+router.get('/', (req: any, res: any) => {
+    User.findById(req.currentUser._id, (err, user: any) => {
+        const matcher: any = {};
+
+        if (user.type == "student") {
+            matcher.author = user._id;
+        }
+
+        matcher._id = {$in: user.courses};
+
+        FeedItem.find(matcher).exec((err, feedItems) => {
+            return res.json(feedItems);
+        });
+    });
+});
 
 router.get('/video/:videoId', (req: any, res: any) => {
   const videoId = req.params.videoId;

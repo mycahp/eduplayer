@@ -9,7 +9,11 @@ export class FeedItemService {
 
   constructor(private http: HttpClient, private apiConfig: ApiConfigService) { }
 
-  public getFeedItems(videoId: string) {
+  public getAllFeedItems() {
+    return this.http.get(`${this.apiConfig.apiURL}/feed-items`);
+  }
+
+  public getFeedItemsByVideoId(videoId: string) {
     return this.http.get(`${this.apiConfig.apiURL}/feed-items/video/${videoId}`);
   }
 

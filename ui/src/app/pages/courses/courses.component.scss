@@ -1,11 +1,22 @@
 .home-container {
-    display: flex;
-    width: 75%;
-    margin: 10px auto;
-    flex-wrap: wrap;
+  display: flex;
+  width: 75%;
+  margin: 10px auto;
+  flex-wrap: wrap;
 
-    app-class-card {
-        width: 75%;
-        margin: 25px auto;
+  app-class-card {
+    width: 75%;
+    margin: 25px auto;
+  }
+
+  .teaching-follow-ups {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    h3 {
+      font-size: 2em;
     }
+  }
 }

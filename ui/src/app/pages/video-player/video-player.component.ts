@@ -55,7 +55,7 @@ export class VideoPlayerComponent implements OnInit {
   }
 
   getFeedItems() {
-    this.feedItemService.getFeedItems(this.videoId).subscribe((result: FeedItem[]) => {
+    this.feedItemService.getFeedItemsByVideoId(this.videoId).subscribe((result: FeedItem[]) => {
       this.feedItems = result;
     });
   }

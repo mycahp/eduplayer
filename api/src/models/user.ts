@@ -15,7 +15,7 @@ const User = new Schema({
 });
 
 User.methods.generateAuthToken = function() {
-  const token = jwt.sign({ _id: this._id, type: this.type }, config.get('secretKey')); // get the private key from the config file -> environment variable
+  const token = jwt.sign({ _id: this._id, type: this.type }, config.get('secretKey'));
   return token;
 }
 

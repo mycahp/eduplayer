@@ -1,3 +1,6 @@
 <div class="home-container">
-    <app-class-card *ngFor="let course of userService.currentUser.courses" [course]="course"></app-class-card>
+  <div class="teaching-follow-ups" *ngIf="isTeachingStaff()">
+    <h3>Hello, {{userService.currentUser.firstName}} {{userService.currentUser.lastName}}! You have <a [routerLink]="'/teaching-staff/follow-ups'">{{feedItemCount}} follow-ups waiting for response</a>.</h3>
+  </div>
+	<app-class-card *ngFor="let course of userService.currentUser.courses" [course]="course"></app-class-card>
 </div>

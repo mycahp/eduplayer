@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/core/models/course';
 import { UserService } from 'src/app/shared/services/user.service';
+import { FeedItemService } from 'src/app/shared/services/feed-item.service';
+import { FeedItem } from 'src/app/core/models/feed-item';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,21 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class CoursesComponent implements OnInit {
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, private feedItemService: FeedItemService) { }
+
+  public feedItemCount;
 
   ngOnInit(): void {
+    this.feedItemCount = this.getFeedItemCount();
+  }
+
+  public isTeachingStaff(): boolean {
+    return this.userService.currentUser.type == 'teaching';
+  }
+
+  public getFeedItemCount() {
+    this.feedItemService.getAllFeedItems().subscribe((feedItems: FeedItem[]) => {
+      return feedItems.length;
+    })
   }
 }
