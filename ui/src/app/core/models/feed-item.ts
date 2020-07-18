@@ -1,5 +1,7 @@
+import { User } from './user';
+
 export interface FeedItem {
-    author: string;
+    author: User;
     date: string;
     content: string;
     displayTime: number;

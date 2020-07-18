@@ -1,5 +1,11 @@
 <div class="feed-item-container">
-    <h3>{{feedItem.author}}</h3>
-    <small>{{feedItem.date}}</small>
-    <p>{{feedItem.content}}</p>
+	<h3>{{feedItem.author.firstName}} {{feedItem.author.lastName}}</h3>
+	<small>{{feedItem.date}}</small>
+	<p>{{feedItem.content}}</p>
+
+	<div *ngIf="feedItem.response">
+	  <h3>Professor Response</h3>
+    <p>{{feedItem.response}}</p>
+  </div>
+
 </div>
