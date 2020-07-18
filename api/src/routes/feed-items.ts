@@ -16,7 +16,7 @@ router.get('/', (req: any, res: any) => {
 
         matcher.course = {$in: user.courses};
 
-        FeedItem.find(matcher).exec((err, feedItems) => {
+        FeedItem.find(matcher).populate('video').populate('course').populate('author').exec((err, feedItems) => {
             return res.json(feedItems);
         });
     });
@@ -38,7 +38,7 @@ router.post('/video/:videoId', (req: any, res: any) => {
   const videoId = req.params.videoId;
 
   const feedItem = new FeedItem({
-    author: req.currentUser.userId,
+    author: req.currentUser._id,
     date: new Date(),
     content: req.body.content,
     displayTime: req.body.currentVideoTime,
@@ -57,6 +57,18 @@ router.post('/video/:videoId', (req: any, res: any) => {
     return res.json(feedItems);
   });
 
+});
+
+router.put('/:feedItemId', (req: any, res: any) => {
+    FeedItem.findById(req.params.feedItemId, (err, feedItem: any) => {
+        feedItem.response = req.body.response;
+
+        console.log(req.body.content);
+
+        feedItem.save();
+
+        return res.json(feedItem);
+    })
 });
 
 router.get('/follow-up/:videoId', (req: any, res: any) => {

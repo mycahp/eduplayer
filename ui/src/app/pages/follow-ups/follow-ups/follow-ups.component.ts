@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedItem } from 'src/app/core/models/feed-item';
 import { TimeConverterService } from 'src/app/shared/services/time-converter.service';
+import { FeedItemService } from 'src/app/shared/services/feed-item.service';
 
 @Component({
   selector: 'app-follow-ups',
@@ -9,23 +10,29 @@ import { TimeConverterService } from 'src/app/shared/services/time-converter.ser
 })
 export class FollowUpsComponent implements OnInit {
 
-  constructor(private timeConverterService: TimeConverterService) { }
+  public followUps: FeedItem[];
+
+  constructor(private timeConverterService: TimeConverterService, private feedItemService: FeedItemService) { }
 
   ngOnInit(): void {
+    this.getFollowUpItems();
   }
 
-  getFollowUpItems(): FeedItem[] {
-    return [{
-      author: 'Joe Student',
-      date: 'Jun. 24, 2020',
-      content: 'I do not understand what you meant here. Can you elaborate on what the variable X means?',
-      displayTime: 22,
-      video: '389024023ulkdflj2',
-      course: 'k23k4j239alaskdjw'
-    }];
+  getFollowUpItems() {
+    this.feedItemService.getAllFeedItems().subscribe((feedItems: FeedItem[]) => {
+      this.followUps = feedItems;
+    })
   }
 
   getVideoLength(seconds: number) {
     return this.timeConverterService.getVideoLength(seconds);
+  }
+
+  updateWithResponse(followUp: FeedItem, index: number) {
+    this.feedItemService.updateFeedItem(followUp._id, followUp.response).subscribe((feedItem: any) => {
+      console.log(feedItem);
+
+      this.followUps[index] = feedItem;
+    })
   }
 }

@@ -26,4 +26,10 @@ export class FeedItemService {
   }) {
     return this.http.post(`${this.apiConfig.apiURL}/feed-items/video/${videoId}`, feedItem);
   }
+
+  public updateFeedItem(feedItemId: string, response: string) {
+    return this.http.put(`${this.apiConfig.apiURL}/feed-items/${feedItemId}`, {
+      response: response
+    })
+  }
 }

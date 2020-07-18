@@ -5,4 +5,7 @@ export interface FeedItem {
     displayTime: number;
     video: string;
     course: string;
+    professorComment: boolean;
+    response: string;
+    _id: string;
 }
