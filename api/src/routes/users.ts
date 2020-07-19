@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/:userId', (req, res) => {
   const userId = req.params.userId;
 
-  User.findOne({ _id: userId }).populate('courses').exec((err, user) => {
+  User.findById(userId).populate('courses').exec((err, user) => {
 
     if (!!err) {
       return res.status(400).json(err);

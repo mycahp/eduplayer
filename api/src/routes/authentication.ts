@@ -14,7 +14,7 @@ router.post('/', (req, res, next) => {
         bcrypt.compare(req.body.password, user.password, (err, result) => {
             if (result) {
                 res.json(
-                    { username: user.username, type: user.type, userId: user._id, firstName: user.firstName, lastName: user.lastName, token: user.generateAuthToken(), courses: user.courses }
+                    { username: user.username, type: user.type, _id: user._id, firstName: user.firstName, lastName: user.lastName, token: user.generateAuthToken(), courses: user.courses }
                 );
             }
         });

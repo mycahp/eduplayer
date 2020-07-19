@@ -26,7 +26,7 @@ export class InputFieldComponent implements OnInit {
 
   submitItem() {
     this.feedItemService.submitFeedItem(this.videoId, {
-      author: this.user.currentUser.userId,
+      author: this.user.currentUser._id,
       content: this.content,
       video: this.videoId,
       course: this.courseId,

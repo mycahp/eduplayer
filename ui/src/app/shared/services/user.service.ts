@@ -12,14 +12,14 @@ export class UserService {
     firstName: string,
     lastName: string,
     type: string,
-    userId: string,
+    _id: string,
     token: string,
     courses: Course[]
   } = {
     firstName: null,
     lastName: null,
     type: null,
-    userId: null,
+    _id: null,
     token: null,
     courses: []
   };

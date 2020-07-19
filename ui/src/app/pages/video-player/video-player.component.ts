@@ -7,6 +7,7 @@ import videojs from 'video.js';
 import { HttpClient } from '@angular/common/http';
 import { FeedItemService } from 'src/app/shared/services/feed-item.service';
 
+
 @Component({
   selector: 'app-video-player',
   templateUrl: './video-player.component.html',
@@ -16,7 +17,7 @@ export class VideoPlayerComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private videoService: VideoService, private http: HttpClient, private feedItemService: FeedItemService) { }
 
-  @ViewChild('target', {static: true}) target: ElementRef;
+  @ViewChild('target', { static: true }) target: ElementRef;
 
   public courseId: string;
   public video: Video;
@@ -24,6 +25,8 @@ export class VideoPlayerComponent implements OnInit {
   public videoJSPlayer: any;
   public videoId: string;
   public feedItems: FeedItem[];
+
+  public annotationPlugin: any;
 
   ngOnInit(): void {
     this.videoId = this.route.snapshot.paramMap.get('videoId');
@@ -51,7 +54,7 @@ export class VideoPlayerComponent implements OnInit {
       };
 
       this.videoJSPlayer = videojs(this.target.nativeElement, options);
-    })
+    });
   }
 
   getFeedItems() {
