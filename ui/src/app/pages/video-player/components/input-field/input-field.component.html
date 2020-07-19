@@ -1,4 +1,7 @@
 <div class="input-field-container">
-    <textarea matInput [(ngModel)]="content"></textarea>
-    <button mat-btn (click)="submitItem()">Submit</button>
+    <mat-form-field>
+      <mat-label>Comment</mat-label>
+      <textarea matInput [(ngModel)]="content"></textarea>
+    </mat-form-field>
+  <button mat-raised-button (click)="submitItem()">Submit</button>
 </div>

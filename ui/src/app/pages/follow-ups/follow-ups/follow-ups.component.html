@@ -1,13 +1,16 @@
 <div class="follow-ups-container">
 	<div *ngFor="let followUp of followUps; let index = index" class="follow-up">
-		<h2>{{followUp.author}}</h2>
+		<h2 *ngIf="followUp.author">{{followUp.author.firstName}} {{followUp.author.lastName}}</h2>
 		<small>{{followUp.date}} &bull; <a [routerLink]="'/video/' + followUp.video._id"
-        [queryParams]="{ courseId: followUp.course._id, time: followUp.displayTime }">Video:
-        {{followUp.videoId}} / Time: {{getVideoLength(followUp.displayTime)}}</a></small>
+        [queryParams]="{ courseId: followUp.course._id, time: followUp.displayTime }">
+        {{followUp.video.name}} @ {{getVideoLength(followUp.displayTime)}}</a></small>
 		<p>{{followUp.content}}</p>
 		<div class="response">
-			<textarea matInput [(ngModel)]="followUps[index].response"></textarea>
-			<button mat-btn (click)="updateWithResponse(followUp, index)">Submit</button>
+      <mat-form-field>
+        <mat-label>Message</mat-label>
+        <textarea matInput [(ngModel)]="followUps[index].response"></textarea>
+      </mat-form-field>
+      <button mat-raised-button (click)="updateWithResponse(followUp, index)">{{ !!followUp.response ? 'Update' : 'Submit' }}</button>
 		</div>
 	</div>
 </div>

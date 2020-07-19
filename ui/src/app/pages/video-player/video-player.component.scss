@@ -2,10 +2,10 @@
   display: flex;
   width: 75%;
   margin: 10px auto;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   .video {
-      flex-basis: 75%;
+      flex-basis: 60%;
       flex-grow: 1;
 
       img {
@@ -15,15 +15,7 @@
   }
 
   .feed {
-      flex-basis: 25%;
-      flex-grow: 1;
-      background-color: #EEEEEE;
-      overflow-y: scroll;
-      height: 100%;
-
-      .input {
-        margin-top: 100%;
-      }
+      flex: 1;
 
       .feed-item {
         padding: 10px;

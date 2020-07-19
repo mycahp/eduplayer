@@ -3,13 +3,13 @@
     <video #target class="video-js video" controls muted playsinline preload="none"></video>
 	</div>
 	<div class="feed" *ngIf="videoJSPlayer">
+  	<div class="input">
+			<app-input-field [videoId]="video._id" [courseId]="courseId" [currentTime]="videoJSPlayer.currentTime()" *ngIf="video" (updatedFeedItems)="updatedFeedItems($event)"></app-input-field>
+		</div>
 		<div class="items">
       <div *ngFor="let feedItem of feedItems">
 			  <app-feed-item [feedItem]="feedItem" [hidden]="videoJSPlayer.currentTime() < feedItem.displayTime"></app-feed-item>
       </div>
-		</div>
-		<div class="input">
-			<app-input-field [videoId]="video._id" [courseId]="courseId" [currentTime]="videoJSPlayer.currentTime()" *ngIf="video" (updatedFeedItems)="updatedFeedItems($event)"></app-input-field>
 		</div>
 	</div>
 	<div class="back-btn">

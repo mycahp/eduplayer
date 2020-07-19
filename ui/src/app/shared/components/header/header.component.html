@@ -5,6 +5,6 @@
     </div>
     <div class="status" *ngIf="userService.currentUser">
         <p>Welcome, {{userService.currentUser.firstName}} {{userService.currentUser.lastName}}.</p>
-        <p><button (click)="logout()">Logout</button></p>
+        <p><button mat-raised-button (click)="logout()">Logout</button></p>
     </div>
 </div>

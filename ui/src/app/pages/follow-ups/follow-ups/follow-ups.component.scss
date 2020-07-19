@@ -3,7 +3,12 @@
     width: 75%;
     margin: 10px auto;
     flex-wrap: wrap;
-    border-bottom: 1px solid #6C7A89;
+    // border-bottom: 1px solid #6C7A89;
+    flex-direction: column;
+
+    .follow-up {
+      padding-bottom: 50px;
+    }
 
     .response {
         display: flex;
