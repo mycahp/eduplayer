@@ -4,22 +4,28 @@
   margin: 10px auto;
   flex-direction: column;
 
-  .video {
-      flex-basis: 60%;
+  .video-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .video {
+      flex-basis: 50%;
       flex-grow: 1;
 
       img {
         height: 100%;
         width: 100%;
       }
-  }
+    }
 
-  .feed {
+    .feed {
+      flex-basis: 50%;
       flex: 1;
 
       .feed-item {
-        padding: 10px;
+        padding: 25px;
       }
+    }
   }
 
   .back-btn {

@@ -21,7 +21,7 @@ export class VideoPlayerComponent implements OnInit {
 
   public courseId: string;
   public video: Video;
-  public currentTime: number;
+  public currentTime: number = 0;
   public videoJSPlayer: any;
   public videoId: string;
   public feedItems: FeedItem[];
@@ -33,6 +33,10 @@ export class VideoPlayerComponent implements OnInit {
 
     this.route.queryParamMap.subscribe(params => {
       this.courseId = params.get('courseId');
+
+      if (params.get('time')) {
+        this.currentTime = params.get('time') as any;
+      }
     });
 
     this.getVideo();
@@ -54,6 +58,7 @@ export class VideoPlayerComponent implements OnInit {
       };
 
       this.videoJSPlayer = videojs(this.target.nativeElement, options);
+      this.videoJSPlayer.currentTime(this.currentTime);
     });
   }
 

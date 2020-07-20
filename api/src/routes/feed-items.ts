@@ -25,7 +25,7 @@ router.get('/', (req: any, res: any) => {
 router.get('/video/:videoId', (req: any, res: any) => {
     const videoId = req.params.videoId;
 
-    FeedItem.find({ video: mongoose.Types.ObjectId(videoId), $or: [{ author: req.currentUser._id }, { professorComment: true }] }).sort({ displayTime: 1 }).exec((err, feedItems) => {
+    FeedItem.find({ video: mongoose.Types.ObjectId(videoId), $or: [{ author: req.currentUser._id }, { professorComment: true }] }).sort({ displayTime: -1 }).exec((err, feedItems) => {
         if (!!err) {
             return res.status(400).json(err);
         }
@@ -49,7 +49,7 @@ router.post('/video/:videoId', (req: any, res: any) => {
 
     feedItem.save().then(() => {
 
-        FeedItem.find({ video: mongoose.Types.ObjectId(videoId), $or: [{ author: req.currentUser._id }, { professorComment: true }] }).sort({ displayTime: 1 }).exec((err, feedItems) => {
+        FeedItem.find({ video: mongoose.Types.ObjectId(videoId), $or: [{ author: req.currentUser._id }, { professorComment: true }] }).sort({ displayTime: -1 }).exec((err, feedItems) => {
             if (!!err) {
                 return res.status(400).json(err);
             }
