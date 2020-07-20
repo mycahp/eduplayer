@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiConfigService } from 'src/app/shared/services/api-config.service';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -32,6 +32,7 @@ export class InputFieldComponent implements OnInit {
       course: this.courseId,
       currentVideoTime: this.currentTime
     }).subscribe((response: FeedItem[]) => {
+      this.content = null;
       this.updatedFeedItems.emit(response);
     });
   }

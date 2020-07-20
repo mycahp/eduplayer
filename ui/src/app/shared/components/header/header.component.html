@@ -1,10 +1,9 @@
 <div class="header-container">
-    <div class="title">
-        <h1>EduPlayer</h1>
-        <small>Video Platform for Students</small>
-    </div>
-    <div class="status" *ngIf="userService.currentUser">
-        <p>Welcome, {{userService.currentUser.firstName}} {{userService.currentUser.lastName}}.</p>
-        <p><button mat-raised-button (click)="logout()">Logout</button></p>
-    </div>
+	<div class="title">
+		<h1>EduPlayer</h1>
+		<small>Video Platform for Students</small>
+	</div>
+	<div class="status" *ngIf="userService.currentUser">
+			<span class="material-icons">perm_identity</span>&nbsp;{{userService.currentUser.firstName}} {{userService.currentUser.lastName}} |<button mat-icon-button (click)="logout()"><span class="material-icons">login</span></button>
+	</div>
 </div>
