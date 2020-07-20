@@ -8,8 +8,8 @@
         <app-input-field [videoId]="video._id" [courseId]="courseId" [currentTime]="videoJSPlayer.currentTime()" *ngIf="video" (updatedFeedItems)="updatedFeedItems($event)"></app-input-field>
       </div>
       <div class="items">
-        <div *ngFor="let feedItem of feedItems">
-          <app-feed-item [feedItem]="feedItem" *ngIf="videoJSPlayer.currentTime() > feedItem.displayTime"></app-feed-item>
+        <div *ngFor="let feedItem of feedItems" [class.hidden]="videoJSPlayer.currentTime() < feedItem.displayTime">
+          <app-feed-item [feedItem]="feedItem"></app-feed-item>
         </div>
       </div>
     </div>
